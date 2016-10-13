@@ -1,0 +1,19 @@
+	.data
+array:	.space 20
+Prompt:	.asciiz	"Enter a string of up to 20 upper case characters: "
+	.globl	main
+	.text
+
+main:	li	$a1, 20
+	la	$a0, prompt
+	li	$v0, 4
+	syscall
+	la	$a0, array
+	li	$v0, 8
+	syscall
+	move	$t0, $a0
+	lw	$a0, 0($t0)
+	li	$v0, 1
+	syscall
+	li	$v0, 10
+	syscall
